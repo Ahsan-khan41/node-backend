@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const PropertySchema = new mongoose.Schema(
   {
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
     title: {
       type: String,
       required: true,
@@ -23,6 +27,12 @@ const PropertySchema = new mongoose.Schema(
       required: true,
       min: 1,
     },
+    images: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     details: {
       type: {
         type: String,
