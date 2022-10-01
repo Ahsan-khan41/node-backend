@@ -3,10 +3,11 @@ const database = require("./config/database");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const multer = require("multer");
+const upload = multer();
 
 database.connect();
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -16,7 +17,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(cors());
 
 module.exports = { app, router: express.Router() };

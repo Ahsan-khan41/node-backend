@@ -27,47 +27,40 @@ const PropertySchema = new mongoose.Schema(
       required: true,
       min: 1,
     },
-    images: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
-    details: {
-      type: {
-        type: String,
-        required: true,
-      },
-      subType: {
-        type: String,
-      },
-      area: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-      city: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-      address: {
-        type: String,
-        trim: true,
-      },
-      size: {
-        type: Number,
-        required: true,
-        min: 1,
-      },
-      sizeUnit: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-      description: {
-        type: String,
-      },
+    images: { type: Array, required: true },
+    type: {
+      type: String,
+      required: true,
+    },
+    subType: {
+      type: String,
+    },
+    area: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    city: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    address: {
+      type: String,
+      trim: true,
+    },
+    size: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+    sizeUnit: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
     },
   },
   { timestamps: true }

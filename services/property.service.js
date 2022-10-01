@@ -2,15 +2,21 @@ const { createResponse, formatResponse } = require("../helpers/utility");
 const validate = require("../helpers/validationSchema");
 const Property = require("../model/Property");
 const { BaseError } = require("../helpers/ErrorHandling");
+const cloudinary = require("../config/cloudinary");
 
 const createProperty = async (data, userId) => {
-  const response = validate.registerPropertySchema.validate({ ...data });
+  const result = await cloudinary.uploader.upload(data.images);
 
+  const response = validate.registerPropertySchema.validate({ ...data });
   if (typeof response.error !== "undefined") {
     return createResponse(response);
   }
 
-  await Property.create({ ...data, createdBy: userId });
+  await Property.create({
+    ...data,
+    createdBy: userId,
+    images: [...result.url],
+  });
 
   return formatResponse(201, "Success", "Property created");
 };
