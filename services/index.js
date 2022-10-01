@@ -1,5 +1,10 @@
-const { registerProperty, getAllProperties } = require("./property.service");
+const {
+  createProperty,
+  getAllProperties,
+  getPropertyDetails,
+} = require("./property.service");
 const { register, login } = require("./auth.service");
+const { getUserProperties } = require("./user.service");
 
 const authService = {
   register,
@@ -7,8 +12,13 @@ const authService = {
 };
 
 const propertyService = {
-  registerProperty,
+  createProperty,
   getAllProperties,
+  getPropertyDetails,
 };
 
-module.exports = { propertyService, authService };
+const userService = {
+  getUserProperties,
+};
+
+module.exports = { propertyService, authService, userService };

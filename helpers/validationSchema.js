@@ -35,6 +35,8 @@ const validationValues = {
   }),
 };
 
+const propertyDetailsSchema = Joi.object({});
+
 const registerUserSchema = Joi.object({
   email: validationValues.email,
   firstName: validationValues.firstName,
@@ -59,26 +61,28 @@ const registerPropertySchema = Joi.object({
     "string.empty": `Baths cannot be empty`,
     "any.required": `Baths is required`,
   }),
-  type: Joi.string().required().messages({
-    "string.empty": `Property type cannot be empty`,
-    "any.required": `Property type is required`,
-  }),
-  area: Joi.string().required().messages({
-    "string.empty": `Area cannot be empty`,
-    "any.required": `Area is required`,
-  }),
-  city: Joi.string().required().messages({
-    "string.empty": `City cannot be empty`,
-    "any.required": `City is required`,
-  }),
-  size: Joi.string().required().messages({
-    "string.empty": `Size cannot be empty`,
-    "any.required": `Size is required`,
-  }),
-  sizeUnit: Joi.string().required().messages({
-    "string.empty": `Unit cannot be empty`,
-    "any.required": `Unit is required`,
-  }),
+  details: {
+    type: Joi.string().required().messages({
+      "string.empty": `Property type cannot be empty`,
+      "any.required": `Property type is required`,
+    }),
+    area: Joi.string().required().messages({
+      "string.empty": `Area cannot be empty`,
+      "any.required": `Area is required`,
+    }),
+    city: Joi.string().required().messages({
+      "string.empty": `City cannot be empty`,
+      "any.required": `City is required`,
+    }),
+    size: Joi.string().required().messages({
+      "string.empty": `Size cannot be empty`,
+      "any.required": `Size is required`,
+    }),
+    sizeUnit: Joi.string().required().messages({
+      "string.empty": `Unit cannot be empty`,
+      "any.required": `Unit is required`,
+    }),
+  },
 });
 
 module.exports = {

@@ -1,4 +1,3 @@
-const { propertyService } = require("../services");
 const { formatResponse } = require("../helpers/utility");
 const { authService } = require("../services/index");
 

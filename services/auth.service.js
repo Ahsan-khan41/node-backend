@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const register = async (data) => {
   const { firstName, lastName, email, password } = data;
-  const response = await registerUserSchema.validate({
+  const response = registerUserSchema.validate({
     firstName,
     lastName,
     email,

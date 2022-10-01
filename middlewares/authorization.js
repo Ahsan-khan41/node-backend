@@ -14,11 +14,9 @@ exports.requireSignin = async (req, res, next) => {
           .status(500)
           .json(formatResponse(statusCode || 500, "error", message));
       } else {
-        console.log("decoded", decoded);
-        console.log("Date now", Date.now());
         let user = await User.findOne({ _id: decoded._id });
-        delete user?.password;
-        req.user = user;
+        let { firstName, lastName, email, _id } = user;
+        req.user = { firstName, lastName, email, _id };
         req.id = user?._id.toString();
         next();
       }
