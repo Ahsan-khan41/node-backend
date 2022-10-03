@@ -3,9 +3,9 @@ const propertyController = require("../controllers/property.controller");
 // middlewares
 const { requireSignin } = require("../middlewares/authorization");
 const { fileUpload } = require("../middlewares/fileUpload");
-const cpUpload = fileUpload.fields([{name: 'images', maxCount: 1}])
+const ppUpload = fileUpload.fields([{name: 'images', maxCount: 3}]) // ppUpload = property-pics upload
 
-router.post("/create-property", requireSignin, cpUpload, propertyController.createProperty);
+router.post("/create-property", requireSignin, ppUpload, propertyController.createProperty);
 router.get("/property/all", requireSignin, propertyController.getAllProperties);
 router.get("/property/:id", requireSignin, propertyController.getPropertyDetails);
 

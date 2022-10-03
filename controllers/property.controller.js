@@ -1,5 +1,6 @@
 const { propertyService } = require("../services");
 const { formatResponse } = require("../helpers/utility");
+const { query } = require("express");
 
 const createProperty = async (req, res) => {
   try {
@@ -18,7 +19,7 @@ const createProperty = async (req, res) => {
 
 const getAllProperties = async (req, res) => {
   try {
-    const response = await propertyService.getAllProperties();
+    const response = await propertyService.getAllProperties(req.query);
     if (response) {
       return res.status(response.statusCode).json(response);
     }
